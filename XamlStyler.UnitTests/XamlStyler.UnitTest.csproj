@@ -168,6 +168,12 @@
     <None Include="TestFiles\TestReorderSetterHandling_3.expected">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="TestFiles\TestTabifyingAlignedAttributes.expected">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\TestTabifyingAlignedAttributes.testxaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="TestFiles\TestTextOnlyContentElementHandling.expected">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

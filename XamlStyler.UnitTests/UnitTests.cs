@@ -196,7 +196,19 @@ namespace XamlStyler.UnitTests
             DoTest(stylerOptions, testNumber);
         }
 
-        private void DoTest([System.Runtime.CompilerServices.CallerMemberName] string callerMemberName = "")
+		[Test]
+		public void TestTabifyingAlignedAttributes()
+		{
+			var stylerOptions = new StylerOptions
+			{
+				IndentSize = 4,
+				IndentWithTabs = true,
+			};
+
+			DoTest(stylerOptions);
+		}
+
+		private void DoTest([System.Runtime.CompilerServices.CallerMemberName] string callerMemberName = "")
         {
             // ReSharper disable once ExplicitCallerInfoArgument
             DoTest(new StylerOptions(), callerMemberName);

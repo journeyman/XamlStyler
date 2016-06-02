@@ -1,0 +1,13 @@
+﻿<phone:PhoneApplicationPage x:Class="PhoneApp1.MainPage"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            Orientation="Portrait"
+                            mc:Ignorable="d">
+    <TextBlock FontSize="37"
+               FontWeight="ExtraLight"
+               Foreground="SpringGreen"
+               Visibility="{Binding IsVisible, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=inverse}" />
+</phone:PhoneApplicationPage>

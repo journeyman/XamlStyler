@@ -290,7 +290,21 @@ namespace XamlStyler.Core
             return new string(' ', depth * Options.IndentSize);
         }
 
-        private bool IsNoLineBreakElement(string elementName)
+		private string TryTabifyIndentString(string str)
+		{
+			if (!Options.IndentWithTabs)
+			{
+				return str;
+			}
+
+			str = str.Replace("\t", new string(' ', Options.IndentSize));
+			var spaces = new string(str.TakeWhile(char.IsWhiteSpace).ToArray());
+			int numOfTabs = spaces.Length / Options.IndentSize;
+			var leftOver = spaces.Length % Options.IndentSize;
+			return new string('\t', numOfTabs) + new string(' ', leftOver);
+		}
+
+		private bool IsNoLineBreakElement(string elementName)
         {
             return NoNewLineElementsList.Contains<string>(elementName);
         }
@@ -472,6 +486,7 @@ namespace XamlStyler.Core
                             {
                                 baseIndetationString = GetIndentString(xmlReader.Depth - 1) +
                                                        string.Empty.PadLeft(elementName.Length + 2, ' ');
+	                            baseIndetationString = TryTabifyIndentString(baseIndetationString);
                             }
 
                             string pendingAppend;
@@ -542,6 +557,7 @@ namespace XamlStyler.Core
                             // Align subsequent attributes with first attribute
                             currentIndentString = GetIndentString(xmlReader.Depth - 1) +
                                                   String.Empty.PadLeft(elementName.Length + 2, ' ');
+	                        currentIndentString = TryTabifyIndentString(currentIndentString);
                             continue;
                         }
                         output
